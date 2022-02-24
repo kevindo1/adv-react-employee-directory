@@ -10,7 +10,7 @@ import Register from './views/Register/Register';
 export default function App() {
   return (
     <>
-      <h1
+      {/* <h1
         className={`
       bg-purple-400
         text-3xl
@@ -25,7 +25,7 @@ export default function App() {
       `}
       >
         Hello, World!
-      </h1>
+      </h1> */}
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
