@@ -12,7 +12,7 @@ export default function App() {
     <>
       <h1
         className={`
-      bg-green-400
+      bg-purple-400
         text-3xl
         text-center
       text-white
