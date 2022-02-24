@@ -2,11 +2,12 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { UserProvider } from './context/UserContext';
 import Home from './views/Home/Home';
-import Login from './views/Login/Login';
+import Auth from './views/Auth/Auth';
 import Create from './views/Profile/Create/Create';
 import Edit from './views/Profile/Edit/Edit';
 import Profile from './views/Profile/Profile';
 import Register from './views/Register/Register';
+import ConfirmEmail from './views/Auth/ConfirmEmail';
 
 export default function App() {
   return (
@@ -21,7 +22,10 @@ export default function App() {
               <Register />
             </Route>
             <Route exact path="/login">
-              <Login />
+              <Auth />
+            </Route>
+            <Route path="/confirm-email">
+              <ConfirmEmail />
             </Route>
             <Route exact path="/profile">
               <Profile />
