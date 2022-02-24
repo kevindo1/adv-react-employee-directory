@@ -13,23 +13,23 @@ export default function UserForm({ label = 'Authenticate', onSubmit }) {
     e.preventDefault();
     const { email, password } = formState;
 
-    // try {
-    if (!email || password.length < 8)
-      throw new Error('Email and password (8+ characters) required.');
-    setLoading(true);
-    await onSubmit(email, password);
-    // } catch (error) {
-    //   setLoading(false);
-    //   setFormError(error.message);
-    // }
+    try {
+      if (!email || password.length < 8)
+        throw new Error('Email and password (8+ characters) required.');
+      setLoading(true);
+      await onSubmit(email, password);
+    } catch (error) {
+      setLoading(false);
+      setFormError(error.message);
+    }
   };
 
   return (
-    <div className="flex-col">
-      <form className="ml-16 mt-8 text-slate-200" onSubmit={handleSubmit}>
+    <div className="flex-col text-slate-200">
+      <form className="ml-16 mt-8" onSubmit={handleSubmit}>
         <label className="flex mt-4">Email</label>
         <input
-          className="flex mt-4"
+          className="flex mt-4 text-black"
           type="email"
           name="email"
           value={formState.email}
@@ -37,7 +37,7 @@ export default function UserForm({ label = 'Authenticate', onSubmit }) {
         />
         <label className="flex mt-4">Password</label>
         <input
-          className="flex mt-4"
+          className="flex mt-4 text-black"
           type="password"
           name="password"
           value={formState.password}
@@ -49,6 +49,7 @@ export default function UserForm({ label = 'Authenticate', onSubmit }) {
         >
           {loading ? 'Authenticating' : label}
         </button>
+        {formError}
       </form>
     </div>
   );

@@ -31,8 +31,11 @@ export default function Auth({ isSigningUp = false }) {
         label={isSigningUp ? 'Sign Up' : 'Sign In'}
       />
       {isSigningUp ? (
-        <p>
-          Have an account? <Link to="/login">Sign In</Link>
+        <p className="ml-16 mt-8 text-slate-200">
+          Have an account?{' '}
+          <Link to="/login" className="text-cyan-500 hover:text-cyan-300">
+            Sign In
+          </Link>
         </p>
       ) : (
         <p className="ml-16 mt-8 text-slate-200">
