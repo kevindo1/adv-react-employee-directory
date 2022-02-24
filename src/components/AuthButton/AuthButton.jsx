@@ -9,7 +9,7 @@ export default function AuthButton() {
 
   return (
     <>
-      {/* {user?.email ? (
+      {user?.email ? (
         <button
           className={button}
           onClick={async () => {
@@ -19,11 +19,11 @@ export default function AuthButton() {
         >
           Sign Out
         </button>
-      ) : ( */}
-      <Link to="/login" className={className}>
-        <button className={button}>Sign In</button>
-      </Link>
-      {/* )} */}
+      ) : (
+        <Link to="/login" className={className}>
+          <button className={button}>Sign In</button>
+        </Link>
+      )}
     </>
   );
 }

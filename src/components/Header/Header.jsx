@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useUser } from '../../context/UserContext';
+import AuthButton from '../AuthButton/AuthButton';
 
 export default function Header() {
+  const { user } = useUser();
   return (
     <>
       <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -23,11 +26,14 @@ export default function Header() {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <p className=""></p>
           <div>
-            <Link to={'/login'}>
-              <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-slate-200 border-slate-200 hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
-                Sign In
-              </button>
-            </Link>
+            <div className="text-slate-200 flex-row">
+              <div className="flex">
+                {user?.email ? `Signed in as ${user?.email}` : 'Not Signed In'}
+              </div>
+              <div className="flex">
+                <AuthButton />
+              </div>
+            </div>
           </div>
         </div>
       </nav>
