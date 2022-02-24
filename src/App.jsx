@@ -6,23 +6,24 @@ import Auth from './views/Auth/Auth';
 import Create from './views/Profile/Create/Create';
 import Edit from './views/Profile/Edit/Edit';
 import Profile from './views/Profile/Profile';
-import Register from './views/Register/Register';
 import ConfirmEmail from './views/Auth/ConfirmEmail';
+import Header from './components/Header/Header';
 
 export default function App() {
   return (
     <>
       <UserProvider>
         <BrowserRouter>
+          <Header />
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
             <Route exact path="/login">
               <Auth />
+            </Route>
+            <Route exact path="/register">
+              <Auth isSigningUp />
             </Route>
             <Route path="/confirm-email">
               <ConfirmEmail />

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { signInUser, signUpUser } from '../../services/users';
 import UserForm from '../../components/UserForm/UserForm';
-import Header from '../../components/Header/Header';
+import { Link } from 'react-router-dom';
 
 export default function Auth({ isSigningUp = false }) {
   const history = useHistory();
@@ -26,11 +26,22 @@ export default function Auth({ isSigningUp = false }) {
 
   return (
     <div>
-      <Header />
       <UserForm
         onSubmit={handleAuth}
         label={isSigningUp ? 'Sign Up' : 'Sign In'}
       />
+      {isSigningUp ? (
+        <p>
+          Have an account? <Link to="/login">Sign In</Link>
+        </p>
+      ) : (
+        <p className="ml-16 mt-8 text-slate-200">
+          Click to{' '}
+          <Link to="/register" className="text-cyan-500 hover:text-cyan-300">
+            Sign Up!
+          </Link>
+        </p>
+      )}
     </div>
   );
 }
