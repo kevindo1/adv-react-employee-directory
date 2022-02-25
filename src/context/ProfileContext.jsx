@@ -1,4 +1,4 @@
-import { createContext, useEffect } from 'react';
+import { createContext, useEffect, useContext, useState, useMemo } from 'react';
 import { getProfile } from '../services/profiles';
 
 const ProfileContext = createContext();
@@ -8,12 +8,13 @@ function ProfileProvider({ children }) {
     const fetchProfile = async () => {
       try {
         const resp = await getProfile();
-      } catch (error) {
         setProfile(resp);
+      } catch (error) {
+        setProfile({ name: '', email: '', bio: '', birthday: '' });
       }
     };
     fetchProfile();
-  });
+  }, []);
 
   const [profile, setProfile] = useState({
     name: '',
@@ -26,9 +27,11 @@ function ProfileProvider({ children }) {
     profile, setProfile;
   }, [profile]);
 
-  <ProfileContext.Provider value={{ value }}>
-    {children}
-  </ProfileContext.Provider>;
+  return (
+    <ProfileContext.Provider value={{ value }}>
+      {children}
+    </ProfileContext.Provider>
+  );
 }
 
 const useProfile = () => {
@@ -41,4 +44,4 @@ const useProfile = () => {
   return context;
 };
 
-export { ProfileProvider, useProfile };
+export { ProfileContext, ProfileProvider, useProfile };
