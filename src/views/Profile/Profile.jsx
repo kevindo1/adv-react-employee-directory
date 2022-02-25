@@ -7,6 +7,9 @@ export default function Profile() {
   return (
     <div>
       <h1 className="text-slate-200 mt-8 ml-16 text-3xl">Profile</h1>
+      <h1 className="text-slate-200 mt-8 ml-16 text-2xl">
+        <span className="text-teal-400">Name:</span> Kevin Do
+      </h1>
     </div>
   );
 }
