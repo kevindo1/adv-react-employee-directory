@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
+import { useHistory } from 'react-router-dom';
 
 export default function UserForm({ label = 'Authenticate', onSubmit }) {
   const { handleFormChange, formState, formError, setFormError } = useForm({
@@ -21,6 +22,7 @@ export default function UserForm({ label = 'Authenticate', onSubmit }) {
     } catch (error) {
       setLoading(false);
       setFormError(error.message);
+      history.push('/profile');
     }
   };
 

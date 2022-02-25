@@ -3,7 +3,7 @@ import './App.css';
 import { UserProvider } from './context/UserContext';
 import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth';
-import Profile from './views/Profile/Profile';
+import ViewProfile from './views/Profile/ViewProfile';
 import CreateEdit from './views/Profile/CreateEdit';
 import ConfirmEmail from './views/Auth/ConfirmEmail';
 import Header from './components/Header/Header';
@@ -31,7 +31,7 @@ export default function App() {
                 <ConfirmEmail />
               </Route>
               <PrivateRoute exact path="/profile">
-                <Profile />
+                <ViewProfile />
               </PrivateRoute>
               <PrivateRoute exact path="/profile/edit">
                 <CreateEdit />

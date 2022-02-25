@@ -14,11 +14,16 @@ export default function ProfileForm({ onSubmit }) {
     profile
       ? {
           name: profile.name,
-          email: profile.email,
           birthday: profile.birthday,
           bio: profile.bio,
+          email: profile.email,
         }
-      : { name: '', email: user.email, birthday: '', bio: '' }
+      : {
+          name: '',
+          email: user.email,
+          birthday: '',
+          bio: '',
+        }
   );
   const [loading, setLoading] = useState(false);
 
@@ -26,13 +31,13 @@ export default function ProfileForm({ onSubmit }) {
     e.preventDefault();
     const { name, email, birthday, bio } = formState;
     try {
-      await onSubmit(name, email, birthday, bio);
+      await onSubmit({ name, email, birthday, bio });
     } catch (error) {
       setLoading(false);
       setFormError(error.message);
     }
   };
-
+  console.log('PROFILE FORM', profile);
   return (
     <>
       {loading ? (
@@ -53,7 +58,7 @@ export default function ProfileForm({ onSubmit }) {
               className="flex mt-4 text-black"
               type="email"
               name="email"
-              value={user.email}
+              value={formState.email}
               disabled={true}
               onChange={handleFormChange}
             />
