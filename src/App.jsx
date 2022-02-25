@@ -8,6 +8,7 @@ import Profile from './views/Profile/Profile';
 import ConfirmEmail from './views/Auth/ConfirmEmail';
 import Header from './components/Header/Header';
 import { ProfileProvider } from './context/ProfileContext';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
@@ -29,15 +30,15 @@ export default function App() {
               <Route path="/confirm-email">
                 <ConfirmEmail />
               </Route>
-              <Route exact path="/profile">
+              <PrivateRoute exact path="/profile">
                 <Profile />
-              </Route>
-              <Route exact path="/profile/edit">
+              </PrivateRoute>
+              <PrivateRoute exact path="/profile/edit">
                 <CreateEdit />
-              </Route>
-              <Route exact path="/profile/create">
+              </PrivateRoute>
+              <PrivateRoute exact path="/profile/create">
                 <CreateEdit />
-              </Route>
+              </PrivateRoute>
             </Switch>
           </BrowserRouter>
         </ProfileProvider>

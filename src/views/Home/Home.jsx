@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
         <p className="text-slate-200 mt-8 ml-16 text-xl">
           Please sign in using the button above
         </p>
+        <Link to="/profile">Profile</Link>
       </div>
     </>
   );
