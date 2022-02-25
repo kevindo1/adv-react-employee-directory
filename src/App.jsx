@@ -3,8 +3,8 @@ import './App.css';
 import { UserProvider } from './context/UserContext';
 import Home from './views/Home/Home';
 import Auth from './views/Auth/Auth';
-import CreateEdit from './views/Profile/CreateEdit';
 import Profile from './views/Profile/Profile';
+import CreateEdit from './views/Profile/CreateEdit';
 import ConfirmEmail from './views/Auth/ConfirmEmail';
 import Header from './components/Header/Header';
 import { ProfileProvider } from './context/ProfileContext';
@@ -37,7 +37,7 @@ export default function App() {
                 <CreateEdit />
               </PrivateRoute>
               <PrivateRoute exact path="/profile/create">
-                <CreateEdit />
+                <CreateEdit isCreatingProfile />
               </PrivateRoute>
             </Switch>
           </BrowserRouter>

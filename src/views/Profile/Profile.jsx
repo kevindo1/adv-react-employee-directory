@@ -1,41 +1,31 @@
 import React from 'react';
-import ProfileForm from '../../components/ProfileForm/ProfileForm';
-import { useProfile } from '../../context/ProfileContext';
-import { createProfile, updateProfile } from '../../services/profiles';
 import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { useProfile } from '../../context/ProfileContext';
 
-export default function Profile({ isCreatingProfile = false }) {
-  const { setProfile } = useProfile();
+export default function Profile() {
   const history = useHistory();
+  const { profile, loading } = useProfile();
 
-  const handleProfile = async (name, email, birthday, bio) => {
-    try {
-      if (isCreatingProfile) {
-        await createProfile(name, email, birthday, bio);
-        history.push('/profile');
-      } else {
-        const resp = await updateProfile(name, email, birthday, bio);
-        setProfile({
-          name: resp.name,
-          email: resp.email,
-          birthday: resp.birthday,
-          bio: resp.bio,
-        });
-        history.push('/profile');
-      }
-    } catch (error) {
-      throw error;
-    }
+  const handleClick = () => {
+    history.push('/profile/edit');
   };
 
   return (
     <>
-      {isCreatingProfile ? 'Create a new profile!' : 'Edit your profile'}
+      {loading}
+      {!loading && profile.name ? (
+        <div>
+          <p>Name: {profile.name}</p>
+          <p>Email: {profile.email}</p>
+          <p>Birthday: {profile.birthday}</p>
+          <p>Bio: {profile.bio}</p>
+        </div>
+      ) : (
+        <Redirect to="/profile/create" />
+      )}
       <div>
-        <h1 className="text-slate-200 mt-8 ml-16 text-3xl">Profile</h1>
-        <h1 className="text-slate-200 mt-8 ml-16 text-2xl">
-          <ProfileForm onSubmit={handleProfile} />
-        </h1>
+        <button onClick={handleClick}>Edit profile</button>
       </div>
     </>
   );
