@@ -5,6 +5,9 @@ import { useUser } from '../../context/UserContext';
 import { useProfile } from '../../context/ProfileContext';
 
 export default function ProfileForm({ onSubmit }) {
+  const button =
+    'inline-block text-sm px-4 py-2 leading-none border rounded text-slate-200 border-slate-200 hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0';
+
   const { user } = useUser();
   const { profile } = useProfile();
   const { handleFormChange, formState, formError, setFormError } = useForm(
@@ -50,7 +53,8 @@ export default function ProfileForm({ onSubmit }) {
               className="flex mt-4 text-black"
               type="email"
               name="email"
-              value={formState.email}
+              value={user.email}
+              disabled={true}
               onChange={handleFormChange}
             />
             <label className="flex mt-4">Birthday: </label>
@@ -63,12 +67,13 @@ export default function ProfileForm({ onSubmit }) {
             />
             <label className="flex mt-4">Bio: </label>
             <input
-              className="flex mt-4 text-black"
+              className="flex mt-4 text-black mb-8"
               type="text"
               name="bio"
               value={formState.bio}
               onChange={handleFormChange}
             />
+            <button className={button}>Submit</button>
           </form>
           {formError}
         </div>
