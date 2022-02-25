@@ -25,12 +25,8 @@ function ProfileProvider({ children }) {
     birthday: '',
   });
 
-  const value = useMemo(() => {
-    profile, setProfile;
-  }, [profile]);
-
   return (
-    <ProfileContext.Provider value={{ value }}>
+    <ProfileContext.Provider value={{ profile, setProfile }}>
       {children}
     </ProfileContext.Provider>
   );

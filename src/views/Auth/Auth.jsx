@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { signInUser, signUpUser } from '../../services/users';
-import UserForm from '../../components/UserForm/UserForm';
+import AuthForm from '../../components/AuthForm/AuthForm';
 import { Link } from 'react-router-dom';
 
 export default function Auth({ isSigningUp = false }) {
@@ -26,7 +26,7 @@ export default function Auth({ isSigningUp = false }) {
 
   return (
     <div>
-      <UserForm
+      <AuthForm
         onSubmit={handleAuth}
         label={isSigningUp ? 'Sign Up' : 'Sign In'}
       />
