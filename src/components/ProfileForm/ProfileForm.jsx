@@ -37,7 +37,6 @@ export default function ProfileForm({ onSubmit }) {
       setFormError(error.message);
     }
   };
-  console.log('PROFILE FORM', profile);
   return (
     <>
       {loading ? (

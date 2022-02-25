@@ -31,8 +31,6 @@ function ProfileProvider({ children }) {
     fetchProfile();
   }, [user]);
 
-  console.log('CONTEXT', profile);
-  console.log('CONTEXT', loading);
   return (
     <ProfileContext.Provider value={{ profile, setProfile, loading }}>
       {children}
